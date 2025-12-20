@@ -179,9 +179,11 @@ class passwordResetConfirmView(APIView):
    
 class RefreshView(APIView):
     permission_classes = [permissions.AllowAny]
+    authentication_classes=[]
 
     def post(self, request):
         refresh_token = request.COOKIES.get("refresh_token")
+        print('refresh_token',refresh_token)
 
         if not refresh_token:
             raise AuthenticationFailed("No refresh token")

@@ -6,17 +6,24 @@ __pycache__/
 
 # Django
 db.sqlite3
-.env
-.env.*
 media/
+staticfiles/
+static/
 
-# Virtual environment
+# Virtual Environment
+taskenv/
 venv/
 env/
 
-# IDE
+# Environment files
+.env
+.env.*
+*.env
+
+# IDE / Editor
 .vscode/
 .idea/
 
 # OS
 .DS_Store
+Thumbs.db
