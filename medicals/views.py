@@ -128,7 +128,7 @@ class passwordResetView(APIView):
         token=token_generator.make_token(user)
 
         reset_link=   f"https://medizone-frontend-react.vercel.app/reset-password/{uidb64}/{token}"
-
+        print('reset_link',reset_link)
 
         send_mail(
             subject="Reset Your Password",
