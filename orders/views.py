@@ -102,4 +102,5 @@ class PlaceOrderView(APIView):
         cart_items.delete()
         
         serializer=OrderSerializer(order)
+        
         return Response(serializer.data, status=status.HTTP_201_CREATED)

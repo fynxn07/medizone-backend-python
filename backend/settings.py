@@ -82,6 +82,7 @@ CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "https://medizone.duckdns.org",
 ]
 
 CSRF_TRUSTED_ORIGINS = [

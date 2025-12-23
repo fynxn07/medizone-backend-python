@@ -30,7 +30,7 @@ class CreateRazorpayOrder(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-        # Razorpay client
+       
         client = razorpay.Client(
             auth=(
                 settings.RAZORPAY_KEY_ID,
@@ -38,14 +38,13 @@ class CreateRazorpayOrder(APIView):
             )
         )
 
-        # Create Razorpay order
         razorpay_order = client.order.create({
-            "amount": int(amount * 100),  # paise
+            "amount": int(amount * 100),  
             "currency": "INR",
             "payment_capture": 1
         })
 
-        # Save order in DB
+        
         order = Order.objects.create(
             user=request.user,
             total_amount=amount,
@@ -89,14 +88,14 @@ class VerifyRazorpayPayment(APIView):
         )
 
         try:
-            # Verify signature
+         
             client.utility.verify_payment_signature({
                 "razorpay_order_id": data["razorpay_order_id"],
                 "razorpay_payment_id": data["razorpay_payment_id"],
                 "razorpay_signature": data["razorpay_signature"],
             })
 
-            # Update order
+            
             order = Order.objects.get(
                 razorpay_order_id=data["razorpay_order_id"]
             )
@@ -105,9 +104,7 @@ class VerifyRazorpayPayment(APIView):
             order.razorpay_payment_id = data["razorpay_payment_id"]
             order.save()
 
-            # OPTIONAL (recommended):
-            # clear cart here
-            # Cart.objects.filter(user=request.user).delete()
+           
 
             return Response({
                 "message": "Payment verified successfully",
