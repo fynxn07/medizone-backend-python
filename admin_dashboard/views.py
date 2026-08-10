@@ -15,7 +15,7 @@ class AdminDashboardView(APIView):
         users_count=CustomUser.objects.filter(is_staff=False).count()
         products_count=Products.objects.count()
         orders=Order.objects.prefetch_related('items__product')
-
+        
         orders_count=orders.count()
         total_income=sum(order.total_amount for order in orders)
 

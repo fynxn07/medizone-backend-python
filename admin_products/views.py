@@ -21,7 +21,6 @@ class AdminProductListCreateView(APIView):
         serializer=ProductCreateUpdateSerializer(data=request.data)
         if serializer.is_valid():
             product=serializer.save(is_active=True)
-              # Return with read serializer (with image URL, isActive etc.)
             read_serializer=ProductSerializer(product)
             return Response(read_serializer.data,status=status.HTTP_201_CREATED)
         return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)

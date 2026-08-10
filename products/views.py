@@ -34,3 +34,4 @@ class ProductDetails(APIView):
         product = get_object_or_404(Products, pk=pk, is_active=True)
         serializer = ProductSerializer(product)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
