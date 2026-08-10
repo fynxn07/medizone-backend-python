@@ -83,11 +83,11 @@ CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "https://medizone.duckdns.org",
+    "https://medizone-frontend-react.vercel.app",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:5173",
+    "https://medizone-frontend-react.vercel.app",
 ]
 
 CORS_ALLOW_HEADERS = [
@@ -214,5 +214,8 @@ DEFAULT_FROM_EMAIL=EMAIL_HOST_USER
 
 
 RAZORPAY_KEY_ID = os.getenv("RAZORPAY_KEY_ID")
+RAZORPAY_KEY_SECRET = os.getenv("RAZORPAY_KEY_SECRET")
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
